@@ -1,0 +1,86 @@
+
+{{!-- Main Sidebar --}}
+<div class="sidebar toggle">
+
+    {{!-- Search Field --}}
+    {{input class="search" type="text" placeholder="Search"}}
+
+    <li {{ action "toggleMenu" }}>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/menu.png" alt="Icon">
+        <h4>Kingdom Hall Info</h4>
+    </li>
+
+    {{#link-to "dashboard"}}
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/sheets.png" alt="Icon">
+        <h4>Dashboard</h4>
+    </li>
+    {{/link-to}}
+
+    {{!-- Life And Ministry --}}
+    {{#link-to "life" "saved" "0"}}
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/open-book.png" alt="Icon">
+        <h4>Life And Ministry</h4>
+    </li>
+    {{/link-to}}
+
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/100/000000/microphone.png" alt="Icon">
+        <h4>Sound And Attendants</h4>
+    </li>
+
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/100/000000/podium-with-speaker.png" alt="Icon">
+        <h4>Incoming Speakers</h4>
+    </li>
+
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/podium-without-speaker.png" alt="Icon">
+        <h4>Outgoing Speakers</h4>
+    </li>
+
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/caretaker.png" alt="">
+        <h4>Field Service</h4>
+    </li>
+
+    <li>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/user-male-circle.png" alt="Profile">
+        <h4>User Profile</h4>
+    </li>
+
+    <li {{ action "signout" }}>
+        <img src="https://png.icons8.com/ios-glyphs/60/000000/logout-rounded.png" alt="Logout">
+        <h4>Signout</h4>
+    </li>
+
+</div>
+
+{{!-- Main Page --}}
+<div class="page toggle">
+{{outlet}}
+</div>
+
+<div class="selector">
+
+    {{!-- Close Button --}}
+    <div class="close" {{action "toggleSelect"}}>
+        <img src="https://img.icons8.com/ios-glyphs/90/000000/multiply.png">
+    </div>
+
+    {{!-- Loop Through Source Material --}}
+    {{#each sourceMaterial as |source|}}
+
+        {{!-- Link To -> Edit Page --}}
+        {{#link-to "life" "new" source.id}}
+        <li {{action "toggleSelect"}}> 
+            <img src="https://img.icons8.com/ios-glyphs/90/000000/overview-pages-2.png" alt="">
+            <h1>{{ source.date }}</h1>
+            <img src="https://img.icons8.com/ios-glyphs/90/000000/forward.png" alt="">
+        </li>
+        {{/link-to}}
+
+    {{/each}}
+
+</div>
